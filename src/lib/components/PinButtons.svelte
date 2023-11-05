@@ -1,0 +1,67 @@
+<script lang="ts">
+  import { toggleLed, type LedsResponse } from "../api/led";
+
+  export let leds: LedsResponse;
+
+  let pinStates = leds.states;
+
+  const handleLed = async (pin: number, index: number) => {
+    const currentState = pinStates[index];
+    const newState = currentState === "on" ? "off" : "on";
+
+    await toggleLed(pin, newState);
+    pinStates[index] = newState;
+    pinStates = pinStates;
+  };
+</script>
+
+<div class="pin-buttons">
+  {#each leds.pins as pin, i}
+    <button
+      class:active-pin={pinStates[i] === "on"}
+      class:disabled-pin={pinStates[i] === "off"}
+      on:click={() => handleLed(pin, i)}
+      class="pin-button">PIN : {pin}</button
+    >
+  {/each}
+</div>
+
+<style>
+  .pin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem;
+  }
+
+  .pin-button {
+    color: white;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    border: none;
+    padding: 2rem;
+    border-radius: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+
+  .active-pin {
+    background-color: rgb(0, 135, 0);
+  }
+
+  .pin-button:hover {
+    scale: 1.2;
+  }
+
+  .active-pin:hover {
+    background-color: rgb(0, 103, 0);
+  }
+
+  .disabled-pin {
+    background-color: rgb(156, 0, 0);
+  }
+
+  .disabled-pin:hover {
+    background-color: rgb(52, 0, 0);
+  }
+</style>
