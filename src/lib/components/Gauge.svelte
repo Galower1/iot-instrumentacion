@@ -3,13 +3,14 @@
   export let name = "";
 
   export let style: string = "";
+  export let unit: string = "%";
 </script>
 
 <div class="gauge" {style}>
   <h4>{name}</h4>
   <div class="gauge-body">
-    <div class="gauge-fill" style={`transform: rotate(${value / 100 / 2}turn)`} />
-    <div class="gauge-cover">{value}%</div>
+    <div class="gauge-fill" style={`transform: rotate(${value / 5 / 2}turn)`} />
+    <div class="gauge-cover">{value}{unit}</div>
   </div>
 </div>
 
