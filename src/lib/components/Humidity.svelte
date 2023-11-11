@@ -1,8 +1,11 @@
 <script lang="ts">
   export let value = 0;
+  export let name = "";
+  export let style = "";
 </script>
 
-<div class="humidity">
+<div {style} class="humidity">
+  <h4>{name}</h4>
   <div class="dropplet" />
   <div class="dropplet-base">
     <div class="dropplet-indicator">{value}%</div>
@@ -10,6 +13,15 @@
 </div>
 
 <style>
+  h4 {
+    width: 100%;
+    font-size: 2rem;
+    height: 2rem;
+    position: absolute;
+    bottom: 15rem;
+    color: black;
+  }
+
   .humidity {
     position: relative;
     display: flex;

@@ -4,17 +4,17 @@
     max: 50,
   };
 
-  export let index = 0;
   export let value = 0;
   export let name = "Termometro";
+  export let style = "";
 
   const temperaturePercentage = (amount: number) => {
     return ((amount - temperatureConfig.min) * 100) / (temperatureConfig.max - temperatureConfig.min);
   };
 </script>
 
-<div class="thermometer">
-  <h4>{name} #{index}</h4>
+<div class="thermometer" {style}>
+  <h4>{name}</h4>
   <div class="base-wrapper">
     <div
       class="thermometer-base"
@@ -25,11 +25,19 @@
 </div>
 
 <style>
+  h4 {
+    width: 100%;
+    font-size: 2rem;
+    height: 2rem;
+    margin: 1rem;
+  }
+
   .thermometer {
     position: relative;
     width: 8rem;
     padding: 1rem;
-    color: white;
+    color: black;
+    background-color: white;
   }
 
   .base-wrapper {

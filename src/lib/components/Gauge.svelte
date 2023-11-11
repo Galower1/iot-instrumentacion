@@ -1,11 +1,12 @@
 <script lang="ts">
   export let value = 0;
-  export let index = 0;
   export let name = "";
+
+  export let style: string = "";
 </script>
 
-<div class="gauge">
-  <h4>{name} #{index}</h4>
+<div class="gauge" {style}>
+  <h4>{name}</h4>
   <div class="gauge-body">
     <div class="gauge-fill" style={`transform: rotate(${value / 100 / 2}turn)`} />
     <div class="gauge-cover">{value}%</div>
@@ -13,10 +14,17 @@
 </div>
 
 <style>
+  h4 {
+    width: 100%;
+    font-size: 2rem;
+    height: 2rem;
+    margin: 1rem;
+  }
+
   .gauge {
     width: 100%;
     max-width: 250px;
-    color: white;
+    color: black;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
 
@@ -45,6 +53,7 @@
   }
 
   .gauge-cover {
+    color: white;
     width: 75%;
     height: 150%;
     background-color: rgb(30, 30, 30);
