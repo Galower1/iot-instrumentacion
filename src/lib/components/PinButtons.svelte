@@ -39,6 +39,7 @@
   `;
 
   const styles = [styleOne, styleTwo, styleThree, styleFour, styleFive];
+  const name = ["Motor 1", "Valvula 1", "Motor 2", "Motor 3", "Valvula 2"];
 </script>
 
 <div class="pin-buttons">
@@ -48,7 +49,7 @@
       class:active-pin={pinStates[i] === "on"}
       class:disabled-pin={pinStates[i] === "off"}
       on:click={() => handleLed(pin, i)}
-      class="pin-button">PIN : {pin}</button
+      class="pin-button">{name[i]}</button
     >
   {/each}
 </div>
