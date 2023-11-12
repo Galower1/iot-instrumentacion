@@ -11,7 +11,11 @@
     time: Date;
   };
 
-  const temperatureCoeficientValues: TemperatureHumidityCoeficient[] = new Array(50).fill({});
+  const temperatureCoeficientValues: TemperatureHumidityCoeficient[] = new Array(50).fill({
+    group: "Grupo 1",
+    value: 0,
+    time: new Date(),
+  });
 
   const temperatureHumidityGraph: LineChartOptions = {
     title: "Coeficiente Temperatura-Humedad Vs. Tiempo",
