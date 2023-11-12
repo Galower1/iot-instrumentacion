@@ -3,8 +3,11 @@
   import Thermometer from "./Thermometer.svelte";
   import Humidity from "./Humidity.svelte";
   import { modulesStore } from "../stores/modulesStore";
+  import PinButtons from "./PinButtons.svelte";
+  import type { LedsResponse } from "../api/led";
 
   export let context: "VARIABLES" | "CONTROL";
+  export let leds: LedsResponse = {} as LedsResponse;
 
   const modelImage =
     "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBudWC7pUMGjClqTUhgX9P0QncaRGOMuJW8mUTmnw550YAXP9k1WgMpEXpbPQ9hES55cz071rXvSdzuUnj8R2Ipek8HCQ=w2346-h1480";
@@ -87,7 +90,9 @@
       <Humidity value={$modulesStore.Water_Level} name="LS #002" style={humidityStyleOne} />
       <Humidity value={$modulesStore.Humidity} name="MI #006" style={humidityStyleTwo} />
     {/if}
-    {#if context === "CONTROL"}{/if}
+    {#if context === "CONTROL"}
+      <PinButtons {leds} />
+    {/if}
   </div>
 </div>
 

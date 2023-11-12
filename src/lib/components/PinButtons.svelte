@@ -3,7 +3,7 @@
 
   export let leds: LedsResponse;
 
-  let pinStates = leds.states;
+  let pinStates = leds?.states;
 
   const handleLed = async (pin: number, index: number) => {
     const currentState = pinStates[index];
@@ -13,11 +13,38 @@
     pinStates[index] = newState;
     pinStates = pinStates;
   };
+
+  const styleOne = `
+    bottom: -1rem;
+  `;
+
+  const styleTwo = `
+    top: 6.5rem;
+    left: 5.5rem;
+  `;
+
+  const styleThree = `
+    bottom: -1rem;
+    left: 16rem;
+  `;
+
+  const styleFour = `
+    left: 32.5rem;
+    bottom: -1rem;
+  `;
+
+  const styleFive = `
+    top: 6.5rem;
+    right: 0.5rem;
+  `;
+
+  const styles = [styleOne, styleTwo, styleThree, styleFour, styleFive];
 </script>
 
 <div class="pin-buttons">
   {#each leds.pins as pin, i}
     <button
+      style={styles[i]}
       class:active-pin={pinStates[i] === "on"}
       class:disabled-pin={pinStates[i] === "off"}
       on:click={() => handleLed(pin, i)}
@@ -27,14 +54,9 @@
 </div>
 
 <style>
-  .pin-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem;
-  }
-
   .pin-button {
+    scale: 0.3;
+    position: absolute;
     color: white;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     border: none;
@@ -50,7 +72,7 @@
   }
 
   .pin-button:hover {
-    scale: 1.2;
+    scale: 0.4;
   }
 
   .active-pin:hover {
