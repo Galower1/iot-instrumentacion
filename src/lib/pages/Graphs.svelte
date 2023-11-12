@@ -5,7 +5,7 @@
 
 <div class="content">
   <BackButton />
-  <GeneralModel />
+  <GeneralModel context="VARIABLES" />
 </div>
 
 <style>

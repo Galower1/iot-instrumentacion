@@ -2,4 +2,4 @@
   import GeneralModel from "../components/GeneralModel.svelte";
 </script>
 
-<GeneralModel />
+<GeneralModel context="VARIABLES" />

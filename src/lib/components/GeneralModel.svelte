@@ -4,6 +4,8 @@
   import Humidity from "./Humidity.svelte";
   import { modulesStore } from "../stores/modulesStore";
 
+  export let context: "VARIABLES" | "CONTROL";
+
   const modelImage =
     "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBudWC7pUMGjClqTUhgX9P0QncaRGOMuJW8mUTmnw550YAXP9k1WgMpEXpbPQ9hES55cz071rXvSdzuUnj8R2Ipek8HCQ=w2346-h1480";
 
@@ -74,15 +76,18 @@
 <div class="general-model">
   <div class="wrapper">
     <img class="schema" src={modelImage} alt="general-model" />
-    <Gauge unit="kg" value={$modulesStore.Weights[0]} name="W1 #001" style={weightStyleOne} />
-    <Gauge unit="kg" value={$modulesStore.Weights[1]} name="W1 #003" style={weightStyleTwo} />
-    <Gauge unit="kg" value={$modulesStore.Weights[2]} name="W1 #007" style={weightStyleThree} />
-    <Gauge unit="Pa" value={$modulesStore.Pressure} name="PT #009" style={pressureStyleOne} />
-    <Thermometer value={$modulesStore.temperatures[0]} name="TI #004" style={temperatureStyleOne} />
-    <Thermometer value={$modulesStore.temperatures[1]} name="TI #005" style={temperatureStyleTwo} />
-    <Thermometer value={$modulesStore.temperatures[2]} name="TI #008" style={temperatureStyleThree} />
-    <Humidity value={$modulesStore.Water_Level} name="LS #002" style={humidityStyleOne} />
-    <Humidity value={$modulesStore.Humidity} name="MI #006" style={humidityStyleTwo} />
+    {#if context === "VARIABLES"}
+      <Gauge unit="kg" value={$modulesStore.Weights[0]} name="W1 #001" style={weightStyleOne} />
+      <Gauge unit="kg" value={$modulesStore.Weights[1]} name="W1 #003" style={weightStyleTwo} />
+      <Gauge unit="kg" value={$modulesStore.Weights[2]} name="W1 #007" style={weightStyleThree} />
+      <Gauge unit="Pa" value={$modulesStore.Pressure} name="PT #009" style={pressureStyleOne} />
+      <Thermometer value={$modulesStore.temperatures[0]} name="TI #004" style={temperatureStyleOne} />
+      <Thermometer value={$modulesStore.temperatures[1]} name="TI #005" style={temperatureStyleTwo} />
+      <Thermometer value={$modulesStore.temperatures[2]} name="TI #008" style={temperatureStyleThree} />
+      <Humidity value={$modulesStore.Water_Level} name="LS #002" style={humidityStyleOne} />
+      <Humidity value={$modulesStore.Humidity} name="MI #006" style={humidityStyleTwo} />
+    {/if}
+    {#if context === "CONTROL"}{/if}
   </div>
 </div>
 
