@@ -3,7 +3,7 @@ export type LedsResponse = {
   states: string[];
 };
 
-export async function getLeds() {
+export function getLeds() {
   return fetch(`http://${window.location.hostname}/api/led`).then((response) =>
     response.json()
   ) as unknown as LedsResponse;
