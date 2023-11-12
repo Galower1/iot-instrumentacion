@@ -11,11 +11,13 @@
     time: Date;
   };
 
-  const temperatureCoeficientValues: TemperatureHumidityCoeficient[] = new Array(50).fill({
-    group: "Grupo 1",
-    value: 0,
-    time: new Date(),
-  });
+  let temperatureCoeficientValues: TemperatureHumidityCoeficient[] = [
+    {
+      group: "Grupo 1",
+      value: 0,
+      time: new Date(),
+    },
+  ];
 
   const temperatureHumidityGraph: LineChartOptions = {
     title: "Coeficiente Temperatura-Humedad Vs. Tiempo",
@@ -45,7 +47,10 @@
   };
 
   modulesStore.subscribe((data) => {
-    temperatureCoeficientValues[tick % 50] = getTemperatureHumidityCoeficient(data.temperatures[1], data.Humidity);
+    setTimeout(() => {
+      temperatureCoeficientValues.push(getTemperatureHumidityCoeficient(data.temperatures[1], data.Humidity));
+      temperatureCoeficientValues = temperatureCoeficientValues;
+    }, 3000);
     tick++;
   });
 </script>
