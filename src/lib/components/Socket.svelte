@@ -9,8 +9,8 @@
 
   onMount(() => {
     const close = initWebSocket(HOST, PORT);
-    const interval = setInterval(() => {
-      updatePowerBI({
+    const interval = setInterval(async () => {
+      await updatePowerBI({
         Temperatura_1: $modulesStore.temperatures[0],
         Temperatura_2: $modulesStore.temperatures[1],
         Temperatura_3: $modulesStore.temperatures[2],

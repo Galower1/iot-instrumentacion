@@ -20,5 +20,7 @@ export function updatePowerBI(payload: Payload) {
         "content-type": "application/json",
       },
     }
-  );
+  )
+    .then((_) => console.log("UPDATE: PowerBI updated"))
+    .catch(console.error);
 }

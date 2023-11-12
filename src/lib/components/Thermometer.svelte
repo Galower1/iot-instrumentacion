@@ -1,7 +1,7 @@
 <script lang="ts">
   const temperatureConfig = {
-    min: -20,
-    max: 50,
+    min: -55,
+    max: 150,
   };
 
   export let value = 0;

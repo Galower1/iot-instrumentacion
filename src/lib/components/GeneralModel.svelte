@@ -83,7 +83,7 @@
       <Gauge unit="kg" value={$modulesStore.Weights[0]} name="W1 #001" style={weightStyleOne} />
       <Gauge unit="kg" value={$modulesStore.Weights[1]} name="W1 #003" style={weightStyleTwo} />
       <Gauge unit="kg" value={$modulesStore.Weights[2]} name="W1 #007" style={weightStyleThree} />
-      <Gauge unit="Pa" value={$modulesStore.Pressure} name="PT #009" style={pressureStyleOne} />
+      <Gauge max={150} unit="PSI" value={$modulesStore.Pressure} name="PT #009" style={pressureStyleOne} />
       <Thermometer value={$modulesStore.temperatures[0]} name="TI #004" style={temperatureStyleOne} />
       <Thermometer value={$modulesStore.temperatures[1]} name="TI #005" style={temperatureStyleTwo} />
       <Thermometer value={$modulesStore.temperatures[2]} name="TI #008" style={temperatureStyleThree} />
