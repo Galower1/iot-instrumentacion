@@ -15,7 +15,7 @@ export function updatePowerBI(payload: Payload) {
     "https://api.powerbi.com/beta/cc28633f-12b8-46cb-bc15-951dae239b4d/datasets/6687c710-7a27-474f-8f8f-4aff1ed6cb15/rows?experience=power-bi&key=qkC%2FA0iJKJZT%2FBDaYWXxabUKd22KW9HYG%2BCUo2J8JGcGAFTiRvMSQvd%2BqRYY5ePWdSGjaQBtXsq5RgBgV0sUNQ%3D%3D",
     {
       method: "POST",
-      body: JSON.stringify(payload),
+      body: JSON.stringify([payload]),
       headers: {
         "content-type": "application/json",
       },
